@@ -1,0 +1,24 @@
+{
+    "editor.formatOnSave": true,
+    // "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "search.exclude": {
+        "build/**/*": true
+    },
+    "editor.tabSize": 2,
+    "editor.fontSize": 16,
+    "eslint.validate": [
+        {
+            "language": "typescript",
+            "autoFix": true
+        },
+        {
+            "language": "typescriptreact",
+            "autoFix": true
+        }
+    ],
+    "eslint.autoFixOnSave": true,
+    "typescript.tsdk": "node_modules/typescript/lib"
+}

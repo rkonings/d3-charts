@@ -1,0 +1,10 @@
+node_modules
+package-lock.json
+.out
+.DS_Store
+coverage
+src
+stories
+test
+.vscode
+.storybook
