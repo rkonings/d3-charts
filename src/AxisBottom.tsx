@@ -7,7 +7,7 @@ interface TickLabel {
     width: number;
 }
 
-const TickLabel = styled.div<TickLabel>`
+export const TickLabel = styled.div<TickLabel>`
     ${({ x, width }) => `
         left: ${x}px;
         width: ${width}px;
@@ -49,9 +49,31 @@ const TickLabel = styled.div<TickLabel>`
     `}
 `;
 
+interface Label {
+    x?: number;
+    width: number;
+}
+
+export const Label = styled.div<Label>`
+    ${({ x, width }) => `
+        left: ${x}px;
+        width: ${width}px;
+        text-align: center;
+        position: absolute;
+        padding-top: 5px;
+        color: #ccc;
+    `}
+`;
+
+const isScaleBand = (
+    scale: d3.ScaleLinear<number, number> | d3.ScaleBand<string>
+): scale is d3.ScaleBand<string> => {
+    return (scale as d3.ScaleLinear<number, number>).ticks === undefined;
+};
+
 interface AxisBottom {
     className?: string;
-    scale: d3.ScaleLinear<number, number>;
+    scale: d3.ScaleLinear<number, number> | d3.ScaleBand<string>;
     amountTicks: number;
 }
 
@@ -59,11 +81,25 @@ export const AxisBottom = styled(
     ({ className, scale, amountTicks }: AxisBottom) => {
         return (
             <div className={className}>
-                {scale.ticks(amountTicks).map((tick) => (
-                    <TickLabel key={tick} width={50} x={scale(tick)}>
-                        {tick}
-                    </TickLabel>
-                ))}
+                {!isScaleBand(scale) &&
+                    scale.ticks(amountTicks).map((tick) => (
+                        <TickLabel key={tick} width={50} x={scale(tick)}>
+                            {tick}
+                        </TickLabel>
+                    ))}
+
+                {isScaleBand(scale) &&
+                    scale.domain().map((label) => {
+                        return (
+                            <Label
+                                key={label}
+                                x={scale(label)}
+                                width={scale.bandwidth()}
+                            >
+                                {label}
+                            </Label>
+                        );
+                    })}
             </div>
         );
     }

@@ -4,7 +4,7 @@ import * as d3 from 'd3';
 import { getDomain } from './getDomain';
 import { AxisBottom } from './AxisBottom';
 import { Grid } from './Elements/Grid';
-import Horizonal from './BarChart/Horizontal';
+import Vertical from './BarChart/Vertical';
 
 export interface Data {
     name: string;
@@ -27,24 +27,25 @@ const Chart = styled(
         const scaleBand = d3
             .scaleBand()
             .domain(data.map(({ name }) => name))
-            .range([0, height]);
+            .padding(0.1)
+            .range([0, width]);
 
         const scaleLinear = d3
             .scaleLinear()
             .domain(scaleLinearDomain)
             .nice(amountTicks)
-            .range([0, width]);
+            .range([height, 0]);
 
         return (
             <div className={className}>
                 <Grid
                     scale={scaleLinear}
                     amountTicks={amountTicks}
-                    layout="HORIZONTAL"
+                    layout="VERTICAL"
                 />
-                <AxisBottom scale={scaleLinear} amountTicks={amountTicks} />
+                <AxisBottom scale={scaleBand} amountTicks={amountTicks} />
                 {data.length > 0 && (
-                    <Horizonal
+                    <Vertical
                         scaleBand={scaleBand}
                         scaleLinear={scaleLinear}
                         data={data}
