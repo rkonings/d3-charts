@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import * as d3 from 'd3';
 import { getDomain } from './getDomain';
 import { AxisBottom } from './AxisBottom';
+import { AxisLeft } from './AxisLeft';
 import { Grid } from './Elements/Grid';
 import Vertical from './BarChart/Vertical';
 
@@ -65,6 +66,8 @@ const Chart = styled(
                     )}
                     <AxisBottom scale={scaleBand} amountTicks={amountTicks} />
                 </InnerChart>
+
+                <AxisLeft scale={scaleLinear} amountTicks={amountTicks} />
             </div>
         );
     }
