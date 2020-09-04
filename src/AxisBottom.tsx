@@ -105,7 +105,7 @@ export const AxisBottom = styled(
     }
 )`
     position: absolute;
-    bottom: 0px;
+    bottom: -1px;
     width: 100%;
     border-top: 1px solid #ccc;
 `;
