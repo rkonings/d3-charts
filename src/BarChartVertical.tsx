@@ -18,6 +18,18 @@ export interface Chart {
     height?: number;
 }
 
+interface InnerChart {
+    x: number;
+}
+const InnerChart = styled.div<InnerChart>`
+    ${({ x }) => `
+        position:absolute;
+        left: ${x}px;
+        width: 100%;
+        height: 100%;
+    `}
+`;
+
 const Chart = styled(
     ({ className, data, width = 400, height = 400 }: Chart) => {
         const scaleLinearDomain = getDomain(data);
@@ -38,19 +50,21 @@ const Chart = styled(
 
         return (
             <div className={className}>
-                <Grid
-                    scale={scaleLinear}
-                    amountTicks={amountTicks}
-                    layout="VERTICAL"
-                />
-                <AxisBottom scale={scaleBand} amountTicks={amountTicks} />
-                {data.length > 0 && (
-                    <Vertical
-                        scaleBand={scaleBand}
-                        scaleLinear={scaleLinear}
-                        data={data}
+                <InnerChart x={100}>
+                    <Grid
+                        scale={scaleLinear}
+                        amountTicks={amountTicks}
+                        layout="VERTICAL"
                     />
-                )}
+                    {data.length > 0 && (
+                        <Vertical
+                            scaleBand={scaleBand}
+                            scaleLinear={scaleLinear}
+                            data={data}
+                        />
+                    )}
+                    <AxisBottom scale={scaleBand} amountTicks={amountTicks} />
+                </InnerChart>
             </div>
         );
     }
