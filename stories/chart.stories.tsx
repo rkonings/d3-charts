@@ -150,4 +150,45 @@ storiesOf('Bar chart/Vertical', module)
         ];
 
         return <BarChartVertical width={width} height={height} data={data} />;
+    })
+    .add('Date values', () => {
+        const width = number('width', 400);
+        const height = number('height', 400);
+
+        const data = [
+            {
+                name: '1-1-2020',
+                salary: 10000,
+            },
+            {
+                name: '1-2-2020',
+                salary: 11000,
+            },
+            {
+                name: '1-3-2020',
+                salary: 1000,
+            },
+            {
+                name: '1-4-2020',
+                salary: 5000,
+            },
+            {
+                name: '1-5-2020',
+                salary: 1000,
+            },
+            {
+                name: '1-6-2020',
+                salary: 5000,
+            },
+            {
+                name: '1-7-2020',
+                salary: 1000,
+            },
+            {
+                name: '1-8-2020',
+                salary: 5000,
+            },
+        ];
+
+        return <BarChartVertical width={width} height={height} data={data} />;
     });
