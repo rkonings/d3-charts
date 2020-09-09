@@ -10,12 +10,14 @@ export const BarLabel = styled.span<BarLabel>`
     position: absolute;
     width: 100%;
     text-align: center;
+    color: #fff;
 
     ${({ position }) => {
         if (position === 'TOP_OUT') {
             return `
               top: -2px;
               transform: translateY(-100%);
+              color: #8B8B8B;
             `;
         } else if (position === 'TOP_IN') {
             return `
@@ -25,6 +27,7 @@ export const BarLabel = styled.span<BarLabel>`
             return `
                 bottom: -2px;
                 transform: translatey(-100%);
+                color: #8B8B8B;
             `;
         } else if (position === 'BOTTOM_IN') {
             return `
