@@ -11,6 +11,7 @@ export const BarLabel = styled.span<BarLabel>`
     width: 100%;
     text-align: center;
     color: #fff;
+    font-size: 14px;
 
     ${({ position }) => {
         if (position === 'TOP_OUT') {
