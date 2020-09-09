@@ -21,7 +21,7 @@ export const BarLabel = styled.span<BarLabel>`
             `;
         } else if (position === 'TOP_IN') {
             return `
-                top: 10px;
+                top: 20px;
             `;
         } else if (position === 'BOTTOM_OUT') {
             return `
@@ -31,7 +31,7 @@ export const BarLabel = styled.span<BarLabel>`
             `;
         } else if (position === 'BOTTOM_IN') {
             return `
-                bottom: 10px;
+                bottom: 20px;
             `;
         } else {
             return `
