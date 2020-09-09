@@ -88,6 +88,6 @@ export const Bar = styled(({ className, value, height }: Bar) => {
       height: ${height}px;
       top: ${y || 0}px;
       left: ${x}px;
-      background: #CCC;
+      background: #304FFE;
   `}
 `;
