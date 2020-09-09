@@ -14,7 +14,7 @@ export const TickLabel = styled.div<TickLabel>`
         transform: translateY(-50%);
         width: ${width}px;
         position:absolute;
-        color: #ccc;
+        color: #8B8B8B;
         display:flex;
         justify-content: flex-end;
 
