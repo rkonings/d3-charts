@@ -54,5 +54,5 @@ export const AxisLeft = styled(
     top: 0;
     height: 100%;
     width: 100px;
-    border-right: 1px solid #ccc;
+    border-right: 1px solid #f5f5f5;
 `;
