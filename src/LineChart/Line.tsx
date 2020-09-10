@@ -50,7 +50,7 @@ export const Line = styled(
                                 }
                                 cy={scaleLinear(salary)}
                                 r="4"
-                                fill="steelblue"
+                                fill="#7685da"
                             />
                         );
                     })}
@@ -65,7 +65,7 @@ export const Line = styled(
     left: 0;
 
     path {
-        stroke: steelblue;
+        stroke: #304ffe;
         stroke-width: 2px;
         fill: none;
     }
