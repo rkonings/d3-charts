@@ -8,12 +8,15 @@ interface BarLabel {
 }
 export const BarLabel = styled.span<BarLabel>`
     position: absolute;
+    color: #fff;
+    font-size: 14px;
 
     ${({ position }) => {
         if (position === 'RIGHT_OUT') {
             return `
                 right: -10px;
                 transform: translateX(100%);
+                color: #8B8B8B;
             `;
         } else if (position === 'RIGHT_IN') {
             return `
@@ -23,6 +26,7 @@ export const BarLabel = styled.span<BarLabel>`
             return `
                 left: -10px;
                 transform: translateX(-100%);
+                color: #8B8B8B;
             `;
         } else if (position === 'LEFT_IN') {
             return `
@@ -81,7 +85,7 @@ export const Bar = styled(({ className, value, width }: Bar) => {
       height: ${height}px;
       top: ${(y || 0) + 20}px;
       left: ${x}px;
-      background: #CCC;
+      background: #304FFE;
       display:flex;
       justify-content: flex-end;
       align-items: center;
