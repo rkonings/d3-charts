@@ -16,6 +16,7 @@ export const Label = styled.div<Label>`
       height: ${height}px;
       width: ${width}px;
       top: ${y}px;
+      font-size: 14px;
     `}
 
     ${({ x, position }) => {
