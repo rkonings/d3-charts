@@ -10,25 +10,29 @@ export const BarLabel = styled.span<BarLabel>`
     position: absolute;
     width: 100%;
     text-align: center;
+    color: #fff;
+    font-size: 14px;
 
     ${({ position }) => {
         if (position === 'TOP_OUT') {
             return `
               top: -2px;
               transform: translateY(-100%);
+              color: #8B8B8B;
             `;
         } else if (position === 'TOP_IN') {
             return `
-                top: 10px;
+                top: 20px;
             `;
         } else if (position === 'BOTTOM_OUT') {
             return `
                 bottom: -2px;
                 transform: translatey(-100%);
+                color: #8B8B8B;
             `;
         } else if (position === 'BOTTOM_IN') {
             return `
-                bottom: 10px;
+                bottom: 20px;
             `;
         } else {
             return `
@@ -84,6 +88,6 @@ export const Bar = styled(({ className, value, height }: Bar) => {
       height: ${height}px;
       top: ${y || 0}px;
       left: ${x}px;
-      background: #CCC;
+      background: #304FFE;
   `}
 `;

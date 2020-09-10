@@ -15,7 +15,7 @@ export const TickLabel = styled.div<TickLabel>`
         margin-left: ${-1 * width * 0.5}px;
         text-align: center;
         padding-top: 5px;
-        color: #ccc;
+        color: #8B8B8B;
 
         &::before {
             content: '';
@@ -61,7 +61,7 @@ export const Label = styled.div<Label>`
         text-align: center;
         position: absolute;
         padding-top: 5px;
-        color: #ccc;
+        color: #8B8B8B;
     `}
 `;
 
@@ -107,5 +107,5 @@ export const AxisBottom = styled(
     position: absolute;
     bottom: -1px;
     width: 100%;
-    border-top: 1px solid #ccc;
+    border-top: 1px solid #f5f5f5;
 `;

@@ -14,7 +14,7 @@ export const TickLabel = styled.div<TickLabel>`
         transform: translateY(-50%);
         width: ${width}px;
         position:absolute;
-        color: #ccc;
+        color: #8B8B8B;
         display:flex;
         justify-content: flex-end;
 
@@ -54,5 +54,5 @@ export const AxisLeft = styled(
     top: 0;
     height: 100%;
     width: 100px;
-    border-right: 1px solid #ccc;
+    border-right: 1px solid #f5f5f5;
 `;
