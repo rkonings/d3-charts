@@ -21,13 +21,15 @@ export interface Chart {
 
 interface InnerChart {
     x: number;
+    width: number;
+    height: number;
 }
 const InnerChart = styled.div<InnerChart>`
-    ${({ x }) => `
+    ${({ x, width, height }) => `
         position:absolute;
         left: ${x}px;
-        width: 100%;
-        height: 100%;
+        width: ${width}px;
+        height: ${height}px;
     `}
 `;
 
@@ -51,7 +53,11 @@ const Chart = styled(
 
         return (
             <div className={className}>
-                <InnerChart x={100}>
+                <InnerChart
+                    width={chartWidth}
+                    height={chartHeight}
+                    x={axisLeftWidth}
+                >
                     <Grid
                         scale={scaleLinear}
                         amountTicks={amountTicks}
