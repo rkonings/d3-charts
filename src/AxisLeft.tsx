@@ -34,6 +34,8 @@ interface AxisLeft {
     className?: string;
     scale: d3.ScaleLinear<number, number>;
     amountTicks: number;
+    height: number;
+    width: number;
 }
 
 export const AxisLeft = styled(
@@ -51,8 +53,8 @@ export const AxisLeft = styled(
 )`
     position: absolute;
     left: 0px;
-    top: 0;
-    height: 100%;
-    width: 100px;
+    top: 10px;
+    height: ${({ height }) => height}px;
+    width: ${({ width }) => width}px;
     border-right: 1px solid #f5f5f5;
 `;

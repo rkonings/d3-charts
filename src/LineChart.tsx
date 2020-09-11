@@ -21,13 +21,15 @@ export interface Chart {
 
 interface InnerChart {
     x: number;
+    width: number;
+    height: number;
 }
 const InnerChart = styled.div<InnerChart>`
-    ${({ x }) => `
+    ${({ x, width, height }) => `
         position:absolute;
         left: ${x}px;
-        width: 100%;
-        height: 100%;
+        width: ${width}px;
+        height: ${height}px;
     `}
 `;
 
@@ -35,27 +37,39 @@ const Chart = styled(
     ({ className, data, width = 400, height = 400 }: Chart) => {
         const scaleLinearDomain = getDomain(data);
 
+        const axisBottomHeight = 50;
+        const axisLeftWidth = 100;
+
         const amountTicks = Math.ceil(width / 100);
+
+        const chartWidth = width - axisLeftWidth;
+        const chartHeight = height - axisBottomHeight;
 
         const scaleBand = d3
             .scaleBand()
             .domain(data.map(({ name }) => name))
             .padding(0.1)
-            .range([0, width]);
+            .range([0, chartWidth]);
 
         const scaleLinear = d3
             .scaleLinear()
             .domain(scaleLinearDomain)
             .nice(amountTicks)
-            .range([height, 0]);
+            .range([chartHeight, 0]);
 
         return (
             <div className={className}>
-                <InnerChart x={100}>
+                <InnerChart
+                    width={chartWidth}
+                    height={chartHeight}
+                    x={axisLeftWidth}
+                >
                     <Grid
                         scale={scaleLinear}
                         amountTicks={amountTicks}
                         layout="VERTICAL"
+                        width={chartWidth}
+                        height={chartHeight}
                     />
                     {data.length > 0 && (
                         <Line
@@ -64,10 +78,20 @@ const Chart = styled(
                             data={data}
                         />
                     )}
-                    <AxisBottom scale={scaleBand} amountTicks={amountTicks} />
+                    <AxisBottom
+                        scale={scaleBand}
+                        width={chartWidth}
+                        height={axisBottomHeight}
+                        amountTicks={amountTicks}
+                    />
                 </InnerChart>
 
-                <AxisLeft scale={scaleLinear} amountTicks={amountTicks} />
+                <AxisLeft
+                    height={chartHeight}
+                    scale={scaleLinear}
+                    amountTicks={amountTicks}
+                    width={axisLeftWidth}
+                />
             </div>
         );
     }
@@ -76,6 +100,8 @@ const Chart = styled(
       width: ${width}px;
       height: ${height}px;
       position: relative;
+      box-sizing: border-box;
+      padding-top: 10px;
     `}
 `;
 

@@ -38,10 +38,12 @@ interface Grid {
     scale: d3.ScaleLinear<number, number>;
     amountTicks: number;
     layout: GridLayout;
+    width: number;
+    height: number;
 }
 
 export const Grid = styled(
-    ({ className, scale, amountTicks, layout }: Grid) => {
+    ({ className, scale, amountTicks, layout, width }: Grid) => {
         return (
             <div className={className}>
                 {scale.ticks(amountTicks).map((tick) => {
@@ -57,6 +59,6 @@ export const Grid = styled(
 )`
     position: absolute;
     top: 0px;
-    width: 100%;
-    height: 100%;
+    width: ${({ width }) => width}px;
+    height: ${({ height }) => height}px;
 `;
