@@ -75,6 +75,8 @@ interface AxisBottom {
     className?: string;
     scale: d3.ScaleLinear<number, number> | d3.ScaleBand<string>;
     amountTicks: number;
+    width: number;
+    height: number;
 }
 
 export const AxisBottom = styled(
@@ -105,7 +107,9 @@ export const AxisBottom = styled(
     }
 )`
     position: absolute;
-    bottom: -1px;
-    width: 100%;
+    bottom: 0px;
+    transform: translateY(100%);
+    width: ${({ width }) => width}px;
+    height: ${({ height }) => height}px;
     border-top: 1px solid #f5f5f5;
 `;
